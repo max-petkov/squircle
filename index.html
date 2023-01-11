@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Superellipse</title>
+</head>
+
+<body>
+    <section class="figma-squircle">
+        <div class="container">
+            <h2>Figma Squircle</h2>
+
+            <div class="figma-squircle__container">
+                <div class="figma-squircle__wrapper">
+                    <a href="#">Button</a>
+                    <p class="text-overline">Default</p>
+                </div>
+                <div class="figma-squircle__wrapper">
+                    <a href="#" class="btn-f-squircle">Button</a>
+                    <p class="text-overline">Smooth Corner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { getSvgPath } from "./node_modules/figma-squircle/dist/module.js";
+
+        function squircle(config) {
+            const squircle = {
+                el: document.querySelector(config.element),
+                bgColor: config.bgColor,
+                width: function() {
+                    return this.el.scrollWidth;
+                },
+                height: function() {
+                    return this.el.scrollHeight;
+                },
+                svgPath: function () {
+                    return getSvgPath({
+                        width: this.width(),
+                        height: this.height(),
+                        cornerRadius: config.cornerRadius, // defaults to 0
+                        cornerSmoothing: config.cornerSmoothing, // cornerSmoothing goes from 0 to 1
+                    })
+                },
+                render: function () {
+                    this.el.style.backgroundColor = this.bgColor;
+                    this.el.style.width = this.width() + "px";
+                    this.el.style.height = this.height() + "px";
+                    this.el.style.borderRadius = 0;
+                    this.el.style.clipPath = `path("${squircle.svgPath()}")`;
+                }
+            };
+
+            return squircle.render();
+        }
+
+        squircle({
+            element: ".btn-f-squircle",
+            cornerRadius: 12,
+            cornerSmoothing: 1
+        })
+
+
+    </script>
+</body>
+
+</html>

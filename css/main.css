@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 64px;
+  letter-spacing: -0.005em;
+}
+
+a {
+  display: inline-block;
+  --bg-color: #4057ff;
+
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+
+  background-color: var(--bg-color);
+  color: #fff;
+}
+
+.text-overline {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Figma Squircle */
+.figma-squircle__container {
+  display: flex;
+  gap: 80px;
+}
+
+.figma-squircle__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* CSS Super Ellipse */
+.btn-superellipse {
+  --bg-color: #4057ff;
+
+  /* overflow: hidden; */
+  position: relative;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+
+  background-color: var(--bg-color);
+  color: #fff;
+
+  /* z-index: 1; */
+}
+
+.btn-superellipse:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -1px;
+  border-radius: 5% / 50%;
+  background-color: var(--bg-color);
+  z-index: -1;
+  width: calc(100% + 2px);
+  height: 80%;
+}
+.btn-superellipse:after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 8px;
+  width: 83%;
+  height: 108%;
+  border-radius: 50% / 5%;
+  background-color: var(--bg-color);
+  z-index: -1;
+}
