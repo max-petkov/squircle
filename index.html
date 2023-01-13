@@ -63,7 +63,7 @@
                     <p class="text-overline">Default</p>
                 </div>
                 <div class="modals__wrapper">
-                    <div class="modal" data-squircle="true" data-squircle-border="shadow">
+                    <div class="modal" data-squircle="true" data-squircle-border="svg">
                         <h6 class="modal__title">Payment successful</h6>
                         <div class="modal__body">
                             <div class="modal__icon">
@@ -78,8 +78,8 @@
                             <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at
                                 euismod tortor, eget luctus neque.</p>
                         </div>
-                        <div class="modal__footer">
-                            <a href="#" class="btn-ghost" data-squircle="true" data-squircle-border="shadow">Close</a>
+                        <div class="modal__footer" data-squircle="modal-footer">
+                            <a href="#" class="btn-ghost" data-squircle="true" data-squircle-border="svg" data-squircle-fill="#fff">Close</a>
                             <a href="#" class="btn-success" data-squircle="true">Go to dashboard</a>
                         </div>
                         <span class="modal__close">
@@ -97,6 +97,14 @@
         </div>
     </section>
 
+    <section class="alerts">
+        <div class="container">
+            <div class="alerts__container">
+                <a href="#" class="btn-ghost" data-squircle="true" data-squircle-border="svg">Button</a>
+            </div>
+        </div>
+    </section>
+
     <script type="module">
         import { getSvgPath } from "./libs/module.js";
 
@@ -108,16 +116,17 @@
         //   READY | 5. Loop Elements | Example: every element which contains data-squircle='true' are going to be rendered with smooth corners
         //   6. Get source code from npm and make it without export (eliminate module type)  
         //   7. Add figma-scuircle documentation  
-        //   8. Create Color Border Fix
+        //   READY | 8. Create Border Fix
+        //   9. Refactor... Maybe change with data-squircle="default"; data-squircle="svg" etc... 
 
         function squircle(config) {
             const squircle = {
                 element: (typeof config.element === "object") ? config.element : document.querySelector(config.element),
                 width: function () {
-                    return Number(getComputedStyle(this.element).width.split("px")[0]);
+                    return Number(getComputedStyle(this.element).width.split("px")[0]).toFixed(2);
                 },
                 height: function () {
-                    return Number(getComputedStyle(this.element).height.split("px")[0]);
+                    return Number(getComputedStyle(this.element).height.split("px")[0]).toFixed(2);
                 },
                 borderRadius: function () {
                     return Number(getComputedStyle(this.element).borderRadius.split("px")[0]);
@@ -129,58 +138,50 @@
                         cornerRadius: config.cornerRadius || this.borderRadius(),
                         cornerSmoothing: config.cornerSmoothing || 1,
                         preserveSmoothing: config.preserveSmoothing || false, // This option allows corner smoothing to work better on large rounded corners.
+                        topLeftCornerRadius: config.topLeftCornerRadius || null,
+                        topRightCornerRadius: config.topRightCornerRadius || null,
+                        bottomLeftCornerRadius: config.bottomLeftCornerRadius || null,
+                        bottomRightCornerRadius: config.bottomRightCornerRadius || null,
                     })
                 },
                 render: function () {
                     const path = this.svgPath();
                     const w = this.width();
                     const h = this.height();
+                    const element = this.element;
 
-                    // Need Adjustment
-                    // if (this.element.getAttribute("data-squircle-border") === "svg") {
-                    //     const wrapper = this.element.closest("div");
+                    if (element.getAttribute("data-squircle-border") === "svg") return svgSquircle();
 
-                    //     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                    //     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    defaultSquircle();
 
-                    //     // svg.style.width = this.element.scrollWidth + "px";
-                    //     // svg.style.height = this.element.scrollHeight + "px";
-                    //     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-                    //     svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-                    //     svg.style.overflow = "visible";
-
-                    //     clipPath.setAttribute("id", "svgMask")
-
-                    //     path.setAttribute("d", squircle.svgPath());
-                    //     path.setAttribute("stroke", "#FF0000");
-                    //     path.setAttribute("stroke-width", "1");
-                    //     path.setAttribute("fill", "none");
-
-                    //     svg.appendChild(path);
-                    //     wrapper.appendChild(svg);
-
-                    //     this.element.maskImage = `url(${svg})`;
-                    // }
-                    // Need Adjustment
-
-                    if (this.element.getAttribute("data-squircle-border") === "shadow") {
-                        const container = this.element.parentElement;
-                        const wrapper = document.createElement("div");
-
-                        this.element.style.borderColor = "transparent";
-
-                        wrapper.classList.add("squircle-shadow");
-                        wrapper.style.width = w + "px";
-                        wrapper.style.height = h + "px";
-                        wrapper.append(this.element);
-                        container.prepend(wrapper);
+                    function defaultSquircle() {
+                        element.style.width = w + "px";
+                        element.style.height = h + "px";
+                        element.style.clipPath = `path("${path}")`;
+                        element.style.borderRadius = 0;
                     }
 
+                    function svgSquircle() {
+                        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                        const stroke = element.getAttribute("data-squircle-stroke") ? element.getAttribute("data-squircle-stroke") : "#cfd2d8";
+                        const strokeWidth = element.getAttribute("data-squircle-stroke-width") ? element.getAttribute("data-squircle-stroke-width") : "1px";
+                        const fill = element.getAttribute("data-squircle-fill") ? element.getAttribute("data-squircle-fill") : "none";
 
-                    this.element.style.width = w + "px";
-                    this.element.style.height = h + "px";
-                    this.element.style.clipPath = `path("${path}")`;
-                    this.element.style.borderRadius = 0;
+                        svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+                        svg.style.overflow = "visible";
+
+                        path.setAttribute("d", squircle.svgPath());
+                        path.setAttribute("stroke", stroke);
+                        path.setAttribute("stroke-width", strokeWidth);
+                        path.setAttribute("fill", fill);
+
+                        svg.append(path);
+                        element.append(svg);
+                        element.style.borderColor = "transparent";
+                        element.style.backgroundColor = "transparent";
+                    }
+
                 }
             };
 
@@ -190,16 +191,22 @@
 
         const squircles = document.querySelectorAll("[data-squircle='true']");
 
+        const start = performance.now();
         squircles.forEach(el => {
             squircle({
                 element: el,
-                // element: ".btn-f-squircle",
-                // cornerRadius: 20, (Optional)
-                // cornerSmoothing: 1 (Optional)
                 preserveSmoothing: true
             })
         });
+        
+        squircle({
+            element: "[data-squircle='modal-footer']",
+            bottomLeftCornerRadius: 14,
+            bottomRightCornerRadius: 14,
+        })
 
+        const end = performance.now();
+        console.log(end - start)
 
 
     </script>

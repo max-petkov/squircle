@@ -84,12 +84,16 @@ a {
 }
 
 /* Squircle CSS */
-.squircle-shadow {
-  -webkit-filter: drop-shadow(0 0 0.5px #3a3b41);
-  filter: drop-shadow(0 0 0.5px #3a3b41);
-  width: 100%;
-  height: 100%;
-} 
+[data-squircle] {
+  position: relative;
+}
+[data-squircle] svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
 /* Helpers */
 
 .text-overline {
@@ -105,13 +109,18 @@ a {
 }
 
 .btn-ghost {
-  z-index: 1;
+  position: relative;
   background-color: #fff;
   color: #4b5262;
+  border: 1px solid #cfd2d8;
 }
 
-.btn-ghost:not([data-squircle-border="shadow"]) {
-  border: 1px solid #b0b4bf;
+.btn-ghost[data-squircle] {
+  z-index: 0;
+}
+
+.btn-ghost[data-squircle] svg {
+  z-index: -1;
 }
 
 /* Buttons */
@@ -146,24 +155,26 @@ a {
 .modals .container {
   max-width: 1280px;
 }
+
 .modal {
   position: relative;
   max-width: 552px;
   width: 100%;
   border-radius: 16px;
-  background-color: #fff;
   overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #cfd2d8;
 }
 
-.modal:not([data-squircle-border="shadow"]) {
-  border: 1px solid #cfd2d8;
+.modal[data-squircle] {
+  overflow: visible;
 }
 
 .modal__close {
   position: absolute;
   display: flex;
   top: 18px;
-  right: 24px;
+  left: calc(100% - (20px + 16px));
   cursor: pointer;
 }
 
@@ -184,6 +195,10 @@ a {
   padding-top: 8px;
   padding-bottom: 16px;
   color: #2a303c;
+}
+
+.modal__icon svg {
+  position: static;
 }
 
 .modal__footer {
