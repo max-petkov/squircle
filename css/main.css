@@ -101,8 +101,28 @@ a {
   position: relative;
   z-index: 1;
   background-color: #fff;
-  border: 1px solid #B0B4BF;
   color: #4B5262;
+}
+
+.btn-ghost.is-squircle {
+  --path-squircle: unset;
+}
+
+.btn-ghost.is-squircle:before {
+  /* --path-squircle: unset; */
+
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--w-squircle);
+  height: var(--h-squircle);
+  clip-path: path(var(--path-squircle));
+  background-color: #000;
+}
+
+.btn-ghost:not(.is-squircle) {
+  border: 1px solid #B0B4BF;
 }
 
 /* Buttons */
@@ -142,9 +162,12 @@ a {
   max-width: 552px;
   width: 100%;
   border-radius: 16px;
-  /* border: 1px solid #cfd2d8; */
   background-color: #fff;
   overflow: hidden;
+}
+
+.modal:not(.is-squircle) {
+  border: 1px solid #cfd2d8;
 }
 
 .modal__close {

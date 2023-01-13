@@ -63,33 +63,37 @@
                     <p class="text-overline">Default</p>
                 </div>
                 <div class="modals__wrapper">
-                    <div class="modal is-squircle">
-                        <h6 class="modal__title">Payment successful</h6>
-                        <div class="modal__body">
-                            <div class="modal__icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="48" height="48" rx="24" fill="#87EEAC" />
-                                    <path
-                                        d="M34.2656 16.7344C34.5469 17.0156 34.5469 17.5312 34.2656 17.8125L21.5156 30.5625C21.2344 30.8438 20.7188 30.8438 20.4375 30.5625L13.6875 23.8125C13.4062 23.5312 13.4062 23.0156 13.6875 22.7344C13.9688 22.4531 14.4844 22.4531 14.7656 22.7344L21 28.9688L33.1875 16.7344C33.4688 16.4531 33.9844 16.4531 34.2656 16.7344Z"
-                                        fill="#16813D" />
-                                </svg>
+                    <div style="filter: drop-shadow(0px 0px 0.5px #626262);">
+                        <div class="modal is-squircle">
+                            <h6 class="modal__title">Payment successful</h6>
+                            <div class="modal__body">
+                                <div class="modal__icon">
+                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="48" height="48" rx="24" fill="#87EEAC" />
+                                        <path
+                                            d="M34.2656 16.7344C34.5469 17.0156 34.5469 17.5312 34.2656 17.8125L21.5156 30.5625C21.2344 30.8438 20.7188 30.8438 20.4375 30.5625L13.6875 23.8125C13.4062 23.5312 13.4062 23.0156 13.6875 22.7344C13.9688 22.4531 14.4844 22.4531 14.7656 22.7344L21 28.9688L33.1875 16.7344C33.4688 16.4531 33.9844 16.4531 34.2656 16.7344Z"
+                                            fill="#16813D" />
+                                    </svg>
+                                </div>
+                                <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at
+                                    euismod tortor, eget luctus neque.</p>
                             </div>
-                            <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at
-                                euismod tortor, eget luctus neque.</p>
+                            <div class="modal__footer">
+                                <div style="filter: drop-shadow(0px 0px 0.5px #626262);">
+                                    <a href="#" class="btn-ghost is-squircle" data-border="true">Close</a>
+                                </div>
+                                <a href="#" class="btn-success is-squircle">Go to dashboard</a>
+                            </div>
+                            <span class="modal__close">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.0547 16.5938C16.2891 16.3594 16.2891 15.9297 16.0547 15.6953L10.8594 10.5L16.0547 5.34375C16.2891 5.10938 16.2891 4.67969 16.0547 4.44531C15.8203 4.21094 15.3906 4.21094 15.1562 4.44531L10 9.64062L4.80469 4.44531C4.57031 4.21094 4.14062 4.21094 3.90625 4.44531C3.67188 4.67969 3.67188 5.10938 3.90625 5.34375L9.10156 10.5L3.90625 15.6953C3.67188 15.9297 3.67188 16.3594 3.90625 16.5938C4.14062 16.8281 4.57031 16.8281 4.80469 16.5938L10 11.3984L15.1562 16.5938C15.3906 16.8281 15.8203 16.8281 16.0547 16.5938Z"
+                                        fill="#757B8A" />
+                                </svg>
+                            </span>
                         </div>
-                        <div class="modal__footer">
-                            <a href="#" class="btn-ghost is-squircle">Close</a>
-                            <a href="#" class="btn-success is-squircle">Go to dashboard</a>
-                        </div>
-                        <span class="modal__close">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M16.0547 16.5938C16.2891 16.3594 16.2891 15.9297 16.0547 15.6953L10.8594 10.5L16.0547 5.34375C16.2891 5.10938 16.2891 4.67969 16.0547 4.44531C15.8203 4.21094 15.3906 4.21094 15.1562 4.44531L10 9.64062L4.80469 4.44531C4.57031 4.21094 4.14062 4.21094 3.90625 4.44531C3.67188 4.67969 3.67188 5.10938 3.90625 5.34375L9.10156 10.5L3.90625 15.6953C3.67188 15.9297 3.67188 16.3594 3.90625 16.5938C4.14062 16.8281 4.57031 16.8281 4.80469 16.5938L10 11.3984L15.1562 16.5938C15.3906 16.8281 15.8203 16.8281 16.0547 16.5938Z"
-                                    fill="#757B8A" />
-                            </svg>
-                        </span>
                     </div>
                     <p class="text-overline">Smooth Corner</p>
                 </div>
@@ -114,27 +118,29 @@
             const squircle = {
                 element: (typeof config.element === "object") ? config.element : document.querySelector(config.element),
                 width: function () {
-                    return this.element.scrollWidth;
+                    return Number(getComputedStyle(this.element).width.split("px")[0]);
                 },
                 height: function () {
-                    return this.element.scrollHeight;
+                    return Number(getComputedStyle(this.element).height.split("px")[0]);
                 },
                 borderRadius: function () {
                     return Number(getComputedStyle(this.element).borderRadius.split("px")[0]);
                 },
-                svgPath: function () {
+                svgPath: function (width, height) {
                     return getSvgPath({
-                        width: this.width(),
-                        height: this.height(),
+                        width: width,
+                        height: height,
                         cornerRadius: config.cornerRadius || this.borderRadius(),
                         cornerSmoothing: config.cornerSmoothing || 1,
                         preserveSmoothing: config.preserveSmoothing || false, // This option allows corner smoothing to work better on large rounded corners.
                     })
                 },
                 render: function () {
+                    const pathSquircle = squircle.svgPath(this.width(), this.height());
+
                     this.element.style.width = this.width() + "px";
                     this.element.style.height = this.height() + "px";
-                    this.element.style.clipPath = `path("${squircle.svgPath()}")`;
+                    this.element.style.clipPath = `path("${pathSquircle}")`;
                     this.element.style.borderRadius = 0;
                 }
             };
@@ -151,7 +157,7 @@
                 // element: ".btn-f-squircle",
                 // cornerRadius: 20, (Optional)
                 // cornerSmoothing: 1 (Optional)
-                // preserveSmoothing: true (Optional)
+                preserveSmoothing: true
             })
         });
 
