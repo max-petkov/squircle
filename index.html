@@ -21,7 +21,7 @@
                     <p class="text-overline">Default</p>
                 </div>
                 <div class="buttons__wrapper">
-                    <a href="#" class="is-squircle">Button</a>
+                    <a href="#" data-squircle="true">Button</a>
                     <p class="text-overline">Smooth Corner</p>
                 </div>
             </div>
@@ -63,37 +63,33 @@
                     <p class="text-overline">Default</p>
                 </div>
                 <div class="modals__wrapper">
-                    <div style="filter: drop-shadow(0px 0px 0.5px #626262);">
-                        <div class="modal is-squircle">
-                            <h6 class="modal__title">Payment successful</h6>
-                            <div class="modal__body">
-                                <div class="modal__icon">
-                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="48" height="48" rx="24" fill="#87EEAC" />
-                                        <path
-                                            d="M34.2656 16.7344C34.5469 17.0156 34.5469 17.5312 34.2656 17.8125L21.5156 30.5625C21.2344 30.8438 20.7188 30.8438 20.4375 30.5625L13.6875 23.8125C13.4062 23.5312 13.4062 23.0156 13.6875 22.7344C13.9688 22.4531 14.4844 22.4531 14.7656 22.7344L21 28.9688L33.1875 16.7344C33.4688 16.4531 33.9844 16.4531 34.2656 16.7344Z"
-                                            fill="#16813D" />
-                                    </svg>
-                                </div>
-                                <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at
-                                    euismod tortor, eget luctus neque.</p>
-                            </div>
-                            <div class="modal__footer">
-                                <div style="filter: drop-shadow(0px 0px 0.5px #626262);">
-                                    <a href="#" class="btn-ghost is-squircle" data-border="true">Close</a>
-                                </div>
-                                <a href="#" class="btn-success is-squircle">Go to dashboard</a>
-                            </div>
-                            <span class="modal__close">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                    <div class="modal" data-squircle="true" data-squircle-border="shadow">
+                        <h6 class="modal__title">Payment successful</h6>
+                        <div class="modal__body">
+                            <div class="modal__icon">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="48" height="48" rx="24" fill="#87EEAC" />
                                     <path
-                                        d="M16.0547 16.5938C16.2891 16.3594 16.2891 15.9297 16.0547 15.6953L10.8594 10.5L16.0547 5.34375C16.2891 5.10938 16.2891 4.67969 16.0547 4.44531C15.8203 4.21094 15.3906 4.21094 15.1562 4.44531L10 9.64062L4.80469 4.44531C4.57031 4.21094 4.14062 4.21094 3.90625 4.44531C3.67188 4.67969 3.67188 5.10938 3.90625 5.34375L9.10156 10.5L3.90625 15.6953C3.67188 15.9297 3.67188 16.3594 3.90625 16.5938C4.14062 16.8281 4.57031 16.8281 4.80469 16.5938L10 11.3984L15.1562 16.5938C15.3906 16.8281 15.8203 16.8281 16.0547 16.5938Z"
-                                        fill="#757B8A" />
+                                        d="M34.2656 16.7344C34.5469 17.0156 34.5469 17.5312 34.2656 17.8125L21.5156 30.5625C21.2344 30.8438 20.7188 30.8438 20.4375 30.5625L13.6875 23.8125C13.4062 23.5312 13.4062 23.0156 13.6875 22.7344C13.9688 22.4531 14.4844 22.4531 14.7656 22.7344L21 28.9688L33.1875 16.7344C33.4688 16.4531 33.9844 16.4531 34.2656 16.7344Z"
+                                        fill="#16813D" />
                                 </svg>
-                            </span>
+                            </div>
+                            <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at
+                                euismod tortor, eget luctus neque.</p>
                         </div>
+                        <div class="modal__footer">
+                            <a href="#" class="btn-ghost" data-squircle="true" data-squircle-border="shadow">Close</a>
+                            <a href="#" class="btn-success" data-squircle="true">Go to dashboard</a>
+                        </div>
+                        <span class="modal__close">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.0547 16.5938C16.2891 16.3594 16.2891 15.9297 16.0547 15.6953L10.8594 10.5L16.0547 5.34375C16.2891 5.10938 16.2891 4.67969 16.0547 4.44531C15.8203 4.21094 15.3906 4.21094 15.1562 4.44531L10 9.64062L4.80469 4.44531C4.57031 4.21094 4.14062 4.21094 3.90625 4.44531C3.67188 4.67969 3.67188 5.10938 3.90625 5.34375L9.10156 10.5L3.90625 15.6953C3.67188 15.9297 3.67188 16.3594 3.90625 16.5938C4.14062 16.8281 4.57031 16.8281 4.80469 16.5938L10 11.3984L15.1562 16.5938C15.3906 16.8281 15.8203 16.8281 16.0547 16.5938Z"
+                                    fill="#757B8A" />
+                            </svg>
+                        </span>
                     </div>
                     <p class="text-overline">Smooth Corner</p>
                 </div>
@@ -109,7 +105,7 @@
         //   READY | 2. Make squircle function like library (check GSAP)
         //   3. Add Responsivness
         //   READY | 4. Check performance time
-        //   READY | 5. Loop Elements | Example: every element which contains .is-squircle are going to be rendered with smooth corners
+        //   READY | 5. Loop Elements | Example: every element which contains data-squircle='true' are going to be rendered with smooth corners
         //   6. Get source code from npm and make it without export (eliminate module type)  
         //   7. Add figma-scuircle documentation  
         //   8. Create Color Border Fix
@@ -126,21 +122,64 @@
                 borderRadius: function () {
                     return Number(getComputedStyle(this.element).borderRadius.split("px")[0]);
                 },
-                svgPath: function (width, height) {
+                svgPath: function () {
                     return getSvgPath({
-                        width: width,
-                        height: height,
+                        width: this.width(),
+                        height: this.height(),
                         cornerRadius: config.cornerRadius || this.borderRadius(),
                         cornerSmoothing: config.cornerSmoothing || 1,
                         preserveSmoothing: config.preserveSmoothing || false, // This option allows corner smoothing to work better on large rounded corners.
                     })
                 },
                 render: function () {
-                    const pathSquircle = squircle.svgPath(this.width(), this.height());
+                    const path = this.svgPath();
+                    const w = this.width();
+                    const h = this.height();
 
-                    this.element.style.width = this.width() + "px";
-                    this.element.style.height = this.height() + "px";
-                    this.element.style.clipPath = `path("${pathSquircle}")`;
+                    // Need Adjustment
+                    // if (this.element.getAttribute("data-squircle-border") === "svg") {
+                    //     const wrapper = this.element.closest("div");
+
+                    //     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    //     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+                    //     // svg.style.width = this.element.scrollWidth + "px";
+                    //     // svg.style.height = this.element.scrollHeight + "px";
+                    //     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+                    //     svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+                    //     svg.style.overflow = "visible";
+
+                    //     clipPath.setAttribute("id", "svgMask")
+
+                    //     path.setAttribute("d", squircle.svgPath());
+                    //     path.setAttribute("stroke", "#FF0000");
+                    //     path.setAttribute("stroke-width", "1");
+                    //     path.setAttribute("fill", "none");
+
+                    //     svg.appendChild(path);
+                    //     wrapper.appendChild(svg);
+
+                    //     this.element.maskImage = `url(${svg})`;
+                    // }
+                    // Need Adjustment
+
+                    if (this.element.getAttribute("data-squircle-border") === "shadow") {
+                        const container = this.element.parentElement;
+                        const wrapper = document.createElement("div");
+
+                        this.element.style.borderColor = "transparent";
+
+                        wrapper.classList.add("squircle-shadow");
+                        wrapper.style.width = w + "px";
+                        wrapper.style.height = h + "px";
+                        wrapper.append(this.element);
+                        container.prepend(wrapper);
+                    }
+
+
+                    this.element.style.width = w + "px";
+                    this.element.style.height = h + "px";
+                    this.element.style.clipPath = `path("${path}")`;
                     this.element.style.borderRadius = 0;
                 }
             };
@@ -149,7 +188,7 @@
         }
 
 
-        const squircles = document.querySelectorAll(".is-squircle");
+        const squircles = document.querySelectorAll("[data-squircle='true']");
 
         squircles.forEach(el => {
             squircle({

@@ -83,6 +83,13 @@ a {
   white-space: nowrap;
 }
 
+/* Squircle CSS */
+.squircle-shadow {
+  -webkit-filter: drop-shadow(0 0 0.5px #3a3b41);
+  filter: drop-shadow(0 0 0.5px #3a3b41);
+  width: 100%;
+  height: 100%;
+} 
 /* Helpers */
 
 .text-overline {
@@ -98,31 +105,13 @@ a {
 }
 
 .btn-ghost {
-  position: relative;
   z-index: 1;
   background-color: #fff;
-  color: #4B5262;
+  color: #4b5262;
 }
 
-.btn-ghost.is-squircle {
-  --path-squircle: unset;
-}
-
-.btn-ghost.is-squircle:before {
-  /* --path-squircle: unset; */
-
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--w-squircle);
-  height: var(--h-squircle);
-  clip-path: path(var(--path-squircle));
-  background-color: #000;
-}
-
-.btn-ghost:not(.is-squircle) {
-  border: 1px solid #B0B4BF;
+.btn-ghost:not([data-squircle-border="shadow"]) {
+  border: 1px solid #b0b4bf;
 }
 
 /* Buttons */
@@ -166,7 +155,7 @@ a {
   overflow: hidden;
 }
 
-.modal:not(.is-squircle) {
+.modal:not([data-squircle-border="shadow"]) {
   border: 1px solid #cfd2d8;
 }
 
@@ -194,7 +183,7 @@ a {
   padding: 0 24px;
   padding-top: 8px;
   padding-bottom: 16px;
-  color: #2A303C;
+  color: #2a303c;
 }
 
 .modal__footer {
