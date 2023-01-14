@@ -87,11 +87,14 @@ a {
 [data-squircle] {
   position: relative;
 }
+
 [data-squircle] svg {
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
+  width: 100%;
+  height: 100%;
 }
 
 /* Helpers */
@@ -148,6 +151,7 @@ a {
 
   a {
     width: 100%;
+    height: 100%;
   }
 }
 
@@ -180,6 +184,8 @@ a {
 
 .modal__close svg {
   pointer-events: none;
+  width: unset;
+  height: unset;
 }
 
 .modal__title {
@@ -199,6 +205,8 @@ a {
 
 .modal__icon svg {
   position: static;
+  width: unset;
+  height: unset;
 }
 
 .modal__footer {
