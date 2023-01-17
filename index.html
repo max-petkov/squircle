@@ -21,7 +21,7 @@
                     <p class="text-overline">Default</p>
                 </div>
                 <div class="buttons__wrapper">
-                    <a href="#" data-squircle="true">Button</a>
+                    <a href="#" data-squircle="default">Button</a>
                     <p class="text-overline">Smooth Corner</p>
                 </div>
             </div>
@@ -36,16 +36,13 @@
                         <h6 class="modal__title">Payment successful</h6>
                         <div class="modal__body">
                             <div class="modal__icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="48" height="48" rx="24" fill="#87EEAC" />
-                                    <path
-                                        d="M34.2656 16.7344C34.5469 17.0156 34.5469 17.5312 34.2656 17.8125L21.5156 30.5625C21.2344 30.8438 20.7188 30.8438 20.4375 30.5625L13.6875 23.8125C13.4062 23.5312 13.4062 23.0156 13.6875 22.7344C13.9688 22.4531 14.4844 22.4531 14.7656 22.7344L21 28.9688L33.1875 16.7344C33.4688 16.4531 33.9844 16.4531 34.2656 16.7344Z"
+                                    <path d="M34.2656 16.7344C34.5469 17.0156 34.5469 17.5312 34.2656 17.8125L21.5156 30.5625C21.2344 30.8438 20.7188 30.8438 20.4375 30.5625L13.6875 23.8125C13.4062 23.5312 13.4062 23.0156 13.6875 22.7344C13.9688 22.4531 14.4844 22.4531 14.7656 22.7344L21 28.9688L33.1875 16.7344C33.4688 16.4531 33.9844 16.4531 34.2656 16.7344Z"
                                         fill="#16813D" />
                                 </svg>
                             </div>
-                            <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at
-                                euismod tortor, eget luctus neque.</p>
+                            <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at euismod tortor, eget luctus neque.</p>
                         </div>
                         <div class="modal__footer">
                             <a href="#" class="btn-ghost">Close</a>
@@ -63,7 +60,7 @@
                     <p class="text-overline">Default</p>
                 </div>
                 <div class="modals__wrapper">
-                    <div class="modal" data-squircle="true" data-squircle-border="svg">
+                    <div class="modal" data-squircle="svg">
                         <h6 class="modal__title">Payment successful</h6>
                         <div class="modal__body">
                             <div class="modal__icon">
@@ -78,9 +75,9 @@
                             <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at
                                 euismod tortor, eget luctus neque.</p>
                         </div>
-                        <div class="modal__footer" data-squircle="modal-footer">
-                            <a href="#" class="btn-ghost" data-squircle="true" data-squircle-border="svg" data-squircle-fill="#fff">Close</a>
-                            <a href="#" class="btn-success" data-squircle="true">Go to dashboard</a>
+                        <div class="modal__footer" data-squircle="default" data-squircle-bottom-left-radius="15" data-squircle-bottom-right-radius="15">
+                            <a href="#" class="btn-ghost" data-squircle="svg" data-squircle-fill="#fff">Close</a>
+                            <a href="#" class="btn-success" data-squircle="default">Go to dashboard</a>
                         </div>
                         <span class="modal__close">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -97,14 +94,6 @@
         </div>
     </section>
 
-    <section class="alerts">
-        <div class="container">
-            <div class="alerts__container">
-                <!-- Alert Boxes -->
-            </div>
-        </div>
-    </section>
-
     <script type="module">
         import { getSvgPath } from "./libs/module.js";
 
@@ -117,7 +106,7 @@
         //   6. Get source code from npm and make it without export (eliminate module type)  
         //   7. Add figma-scuircle documentation  
         //   READY | 8. Create Border Fix
-        //   9. Refactor... Maybe change with data-squircle="default"; data-squircle="svg" etc... 
+        //   READY | 9. Refactor... Maybe change with data-squircle="default"; data-squircle="svg" etc... 
         //   10. Fix width and height when element has 100% width 
 
         function squircle(config) {
@@ -139,10 +128,10 @@
                         cornerRadius: config.cornerRadius || this.borderRadius(),
                         cornerSmoothing: config.cornerSmoothing || 1,
                         preserveSmoothing: config.preserveSmoothing || false, // This option allows corner smoothing to work better on large rounded corners.
-                        topLeftCornerRadius: config.topLeftCornerRadius || null,
-                        topRightCornerRadius: config.topRightCornerRadius || null,
-                        bottomLeftCornerRadius: config.bottomLeftCornerRadius || null,
-                        bottomRightCornerRadius: config.bottomRightCornerRadius || null,
+                        topLeftCornerRadius: Number(this.element.getAttribute("data-squircle-top-left-radius")) || null,
+                        topRightCornerRadius: Number(this.element.getAttribute("data-squircle-top-right-radius")) || null,
+                        bottomLeftCornerRadius: Number(this.element.getAttribute("data-squircle-bottom-left-radius")) || null,
+                        bottomRightCornerRadius: Number(this.element.getAttribute("data-squircle-bottom-right-radius")) || null,
                     })
                 },
                 render: function () {
@@ -151,9 +140,8 @@
                     const h = this.height();
                     const element = this.element;
 
-                    if (element.getAttribute("data-squircle-border") === "svg") return svgSquircle();
-
-                    defaultSquircle();
+                    if(element.getAttribute("data-squircle") === "svg") svgSquircle();
+                    else defaultSquircle();
 
                     function defaultSquircle() {
                         element.style.width = w + "px";
@@ -181,7 +169,8 @@
 
                         element.style.borderColor = "transparent";
                         element.style.backgroundColor = "transparent";
-                        element.style.maxWidth = w + "px";
+                        element.style.width = w + "px";
+                        element.style.minWidth = w + "px";
                     }
 
                 }
@@ -190,23 +179,14 @@
             return squircle.render();
         }
 
-
-        const squircles = document.querySelectorAll("[data-squircle='true']");
-
         const start = performance.now();
+        const squircles = document.querySelectorAll("[data-squircle]");
         squircles.forEach(el => {
             squircle({
                 element: el,
                 preserveSmoothing: true
             })
         });
-        
-        squircle({
-            element: "[data-squircle='modal-footer']",
-            bottomLeftCornerRadius: 14,
-            bottomRightCornerRadius: 14,
-        })
-
         const end = performance.now();
         console.log(end - start)
 
