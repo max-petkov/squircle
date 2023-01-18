@@ -154,6 +154,38 @@ a {
   }
 }
 
+/* Icons Squircle */
+.icons__container {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cfd2d8;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.6s;
+}
+
+.icon:hover {
+  background-color: #000000;
+}
+
+.icon svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
 /* Modals */
 .modals .container {
   max-width: 1280px;
